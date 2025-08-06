@@ -8,5 +8,7 @@
 import Foundation
 
 protocol RemoteAPIManagerProtocol {
-  func callAPI<T: Decodable>(with data: RequestProtocol) async throws -> T
+  
+  typealias ApiResponseHandler<T> = (Result<T, Error>) -> Void
+  func callAPI<T: Decodable>(with data: RequestProtocol, completion: @escaping ApiResponseHandler<T>)
 }

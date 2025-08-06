@@ -23,46 +23,57 @@ class RemoteAPIManager: RemoteAPIManagerProtocol {
   
   // MARK: - Initialization
   
-  init(urlSessionManager: URLSessionManagerProtocol = URLSessionManager(urlSession: .shared)) {
+  public init(urlSessionManager: URLSessionManagerProtocol = URLSessionManager()) {
     self.urlSessionManager = urlSessionManager
   }
   
   // MARK: - Public Methods
   
-  func callAPI<T: Decodable>(with data: RequestProtocol) async throws -> T {
-    let urlRequest = try makeRequest(with: data)
+  public func callAPI<T: Decodable>(
+    with data: RequestProtocol,
+    completion: @escaping ApiResponseHandler<T>
+  ) {
+    guard let urlRequest = try? makeRequest(with: data) else {
+      completion(.failure(RemoteAPIManagerError.invalidURL))
+      return
+    }
     
-    do {
-      let data = try await urlSessionManager.performRequest(urlRequest)
-      return try decoder.decode(T.self, from: data)
-    } catch let error as NetworkError {
-      throw error
+    urlSessionManager.performRequest(urlRequest) { [weak self] response in
+      switch response {
+      case .success(let data):
+        if let decoded = try? self?.decoder.decode(T.self, from: data) {
+          completion(.success(decoded))
+        } else {
+          completion(.failure(RemoteAPIManagerError.decodingFailed))
+        }
+      case .failure(let error):
+        completion(.failure(error))
+      }
     }
   }
   
   private func makeRequest(with data: RequestProtocol) throws -> URLRequest {
     let url = try buildURL(with: data)
-    
-    var urlRequest = URLRequest(url: url)
-    urlRequest.httpMethod = HTTPMethod.get.rawValue
-    
-    return urlRequest
+    var request = URLRequest(url: url)
+    request.httpMethod = HTTPMethod.get.rawValue
+    return request
   }
   
   // MARK: - Private Methods
   
   private func buildURL(with data: RequestProtocol) throws -> URL {
-    var components = URLComponents(string: baseURL)!
-    components.path = data.path
+    var components = URLComponents(string: baseURL)
+    components?.path = data.path
     
-    if let url = components.url {
-      return url
-    } else {
+    guard let url = components?.url else {
       throw RemoteAPIManagerError.invalidURL
     }
+    
+    return url
   }
 }
 
 enum RemoteAPIManagerError: Error {
   case invalidURL
+  case decodingFailed
 }

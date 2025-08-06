@@ -8,7 +8,9 @@
 import Foundation
 
 protocol URLSessionManagerProtocol {
-  func performRequest(_ urlRequest: URLRequest) async throws -> Data
+  
+  typealias ServerResponseHandler = (Result<Data, Error>) -> Void
+  func performRequest(_ urlRequest: URLRequest, completion: @escaping ServerResponseHandler)
 }
 
 class URLSessionManager: URLSessionManagerProtocol {
@@ -19,16 +21,25 @@ class URLSessionManager: URLSessionManagerProtocol {
     self.urlSession = urlSession
   }
   
-  func performRequest(_ urlRequest: URLRequest) async throws -> Data {
-    let (data, response) = try await urlSession.data(for: urlRequest)
-    if let httpResponse = response as? HTTPURLResponse,
-       httpResponse.statusCode != 200 {
-      throw NetworkError.invalidServerResponse(statusCode: httpResponse.statusCode)
-    }
-    return data
+  func performRequest(_ urlRequest: URLRequest, completion: @escaping ServerResponseHandler) {
+    urlSession.dataTask(with: urlRequest) { (data, response, error) in
+      let result: Result<Data, Error>
+      defer {
+        DispatchQueue.main.async {
+          completion(result)
+        }
+      }
+      if let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode {
+        guard let data = data else { return result = .failure(NetworkError.invalidData) }
+        result = .success(data)
+      } else {
+        result = .failure(NetworkError.invalidServerResponse)
+      }
+    }.resume()
   }
 }
 
 enum NetworkError: Error {
-  case invalidServerResponse(statusCode: Int)
+  case invalidServerResponse
+  case invalidData
 }
