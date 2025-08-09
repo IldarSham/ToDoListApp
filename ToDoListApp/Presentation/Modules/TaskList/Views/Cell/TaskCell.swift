@@ -7,35 +7,44 @@
 
 import UIKit
 
-struct TaskCellModel {
+struct TaskCellViewModel {
   let title: String
-  let description: String
+  let description: String?
   let date: String
-  let isCompleted: Bool
+  var isCompleted: Bool
 }
 
 class TaskCell: UITableViewCell {
   
   // MARK: - Properties
   
-  private let checkmarkButton: UIButton = {
+  public var isTaskCompleted: Bool = false {
+    didSet {
+      updateStyle()
+    }
+  }
+  
+  private var didTapCheckmarkButton: (() -> Void)?
+
+  // MARK: - UI Elements
+  
+  private lazy var checkmarkButton: UIButton = {
     let button = UIButton(type: .custom)
     let config = UIImage.SymbolConfiguration(pointSize: 28, weight: .thin)
     
-    // Normal state
     button.setImage(
       UIImage(systemName: "circle", withConfiguration: config)?
         .withTintColor(.gray, renderingMode: .alwaysOriginal),
       for: .normal
     )
     
-    // Selected state
     button.setImage(
       UIImage(systemName: "checkmark.circle", withConfiguration: config)?
         .withTintColor(.systemYellow, renderingMode: .alwaysOriginal),
       for: .selected
     )
     
+    button.addTarget(self, action: #selector(handleCheckmarkButtonTap), for: .touchUpInside)
     button.setContentHuggingPriority(.required, for: .horizontal)
     return button
   }()
@@ -68,7 +77,7 @@ class TaskCell: UITableViewCell {
     let label = UILabel()
     label.font = .systemFont(ofSize: 17, weight: .medium)
     label.textColor = .white
-    label.numberOfLines = 1
+    label.numberOfLines = 0
     return label
   }()
   
@@ -100,13 +109,20 @@ class TaskCell: UITableViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    titleLabel.attributedText = nil
+  }
+  
   // MARK: - Public Methods
   
-  public func configure(with model: TaskCellModel) {
-    titleLabel.text = model.title
-    descriptionLabel.text = model.description
-    dateLabel.text = model.date
-    checkmarkButton.isSelected = model.isCompleted
+  public func configure(with viewModel: TaskCellViewModel, onCheckmarkButtonTap: @escaping () -> Void) {
+    titleLabel.text = viewModel.title
+    descriptionLabel.text = viewModel.description
+    dateLabel.text = viewModel.date
+    checkmarkButton.isSelected = viewModel.isCompleted
+    isTaskCompleted = viewModel.isCompleted
+    didTapCheckmarkButton = onCheckmarkButtonTap
   }
   
   public func setCheckmarkHidden(_ hidden: Bool) {
@@ -115,8 +131,28 @@ class TaskCell: UITableViewCell {
   
   // MARK: - Private Methods
   
-  private func constructHierarchy() {
-    contentView.addSubview(cellStack)
+  private func updateStyle() {
+    if isTaskCompleted {
+      titleLabel.attributedText = strikeThrough(text: titleLabel.text ?? "")
+      titleLabel.textColor = .primaryGrayColor
+      descriptionLabel.textColor = .primaryGrayColor
+    } else {
+      titleLabel.attributedText = NSAttributedString(string: titleLabel.text ?? "")
+      titleLabel.textColor = .white
+      descriptionLabel.textColor = .white
+    }
+  }
+
+  private func strikeThrough(text: String) -> NSAttributedString {
+    let attributes: [NSAttributedString.Key: Any] = [
+      .strikethroughStyle: NSUnderlineStyle.single.rawValue
+    ]
+    return NSAttributedString(string: text, attributes: attributes)
+  }
+
+  @objc
+  private func handleCheckmarkButtonTap() {
+    didTapCheckmarkButton?()
   }
 }
 
@@ -125,6 +161,10 @@ private extension TaskCell {
   
   func setupAppearance() {
     backgroundColor = .clear
+  }
+  
+  func constructHierarchy() {
+    contentView.addSubview(cellStack)
   }
 }
 

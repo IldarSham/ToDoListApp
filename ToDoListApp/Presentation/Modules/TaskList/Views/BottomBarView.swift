@@ -11,6 +11,16 @@ class BottomBarView: UIView {
   
   // MARK: - Properties
   
+  public var taskCount: Int = 0 {
+    didSet {
+      updateTaskCount()
+    }
+  }
+  
+  private var didTapNewTaskButton: (() -> Void)?
+  
+  // MARK: - UI Elements
+  
   private let taskCountLabel: UILabel = {
     let label = UILabel()
     label.textColor = .white
@@ -18,11 +28,12 @@ class BottomBarView: UIView {
     return label
   }()
   
-  private let newTaskButton: UIButton = {
+  private lazy var newTaskButton: UIButton = {
     let button = UIButton(type: .system)
     let configuration = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium)
     button.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: configuration), for: .normal)
     button.tintColor = .systemYellow
+    button.addTarget(self, action: #selector(handleNewTaskButtonTap), for: .touchUpInside)
     return button
   }()
   
@@ -41,8 +52,20 @@ class BottomBarView: UIView {
   
   // MARK: - Public Methods
   
-  public func configure(taskCount: Int) {
+  public func configure(taskCount: Int = 0, onTapNewTaskButton: @escaping () -> Void) {
+    self.taskCount = taskCount
+    self.didTapNewTaskButton = onTapNewTaskButton
+  }
+  
+  // MARK: - Private Methods
+  
+  private func updateTaskCount() {
     taskCountLabel.text = "\(taskCount) Задач"
+  }
+  
+  @objc
+  private func handleNewTaskButtonTap() {
+    didTapNewTaskButton?()
   }
 }
 
