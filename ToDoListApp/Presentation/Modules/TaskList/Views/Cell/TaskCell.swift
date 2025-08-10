@@ -92,7 +92,7 @@ class TaskCell: UITableViewCell {
   private let dateLabel: UILabel = {
     let label = UILabel()
     label.font = .systemFont(ofSize: 13, weight: .regular)
-    label.textColor = .gray
+    label.textColor = .primaryGrayColor
     return label
   }()
   

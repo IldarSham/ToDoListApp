@@ -7,6 +7,8 @@
 
 import Foundation
 
+protocol EditTaskViewProtocol: Alertable, AnyObject {}
+
 protocol EditTaskPresenterProtocol {
   var initialTitle: String { get }
   var initialDescription: String? { get }

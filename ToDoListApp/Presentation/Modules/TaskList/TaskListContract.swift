@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol TaskListViewProtocol: AnyObject {
+protocol TaskListViewProtocol: Alertable, AnyObject {
   func display(tasks: [Todo])
   func displayTaskCount(_ count: Int)
   func reload(tasks: [Todo])

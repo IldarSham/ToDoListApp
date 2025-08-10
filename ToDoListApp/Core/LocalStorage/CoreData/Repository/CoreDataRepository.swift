@@ -12,7 +12,7 @@ enum CoreDataError: Error {
   case objectNotFound
 }
 
-final class CoreDataRepository<T: NSManagedObject> {
+final class CoreDataRepository<T: NSManagedObject>: RepositoryProtocol {
   private let stack: CoreDataStack
   private let entityName: String
   

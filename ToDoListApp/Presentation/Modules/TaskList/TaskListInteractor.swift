@@ -7,23 +7,16 @@
 
 import Foundation
 
-public enum TaskListResult {
-  case fetched([Todo])
-  case toggled(Todo)
-  case deleted(Todo)
-  case failure(Error)
-}
-
 class TaskListInteractor: TaskListInteractorInputProtocol {
   
   // MARK: - Dependencies
   
   public weak var presenter: TaskListInteractorOutputProtocol?
-  private let repository: CoreDataRepository<Todo>
+  private let repository: any RepositoryProtocol<Todo>
   
   // MARK: - Initialization
   
-  public init(repository: CoreDataRepository<Todo>) {
+  public init(repository: any RepositoryProtocol<Todo>) {
     self.repository = repository
   }
   

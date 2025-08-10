@@ -16,6 +16,15 @@
 		744977A62E44287500BEE726 /* EditTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744977A52E44287500BEE726 /* EditTaskPresenter.swift */; };
 		744977A82E4428B300BEE726 /* EditTaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744977A72E4428B300BEE726 /* EditTaskInteractor.swift */; };
 		744977AA2E4428C400BEE726 /* EditTaskContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744977A92E4428C400BEE726 /* EditTaskContract.swift */; };
+		744E29AD2E483948006D0E89 /* Todo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29AC2E483948006D0E89 /* Todo+Extension.swift */; };
+		744E29B12E483D4B006D0E89 /* EditTaskInteractorInputMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29B02E483D4B006D0E89 /* EditTaskInteractorInputMock.swift */; };
+		744E29B32E483D9E006D0E89 /* EditTaskModuleDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29B22E483D9E006D0E89 /* EditTaskModuleDelegateMock.swift */; };
+		744E29B72E484343006D0E89 /* EditTaskInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29B62E484343006D0E89 /* EditTaskInteractorTests.swift */; };
+		744E29B92E48458B006D0E89 /* EditTaskInteractorOutputMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29B82E48458B006D0E89 /* EditTaskInteractorOutputMock.swift */; };
+		744E29BB2E485FB4006D0E89 /* StartEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29BA2E485FB4006D0E89 /* StartEntities.swift */; };
+		744E29BD2E485FDE006D0E89 /* TaskListEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29BC2E485FDE006D0E89 /* TaskListEntities.swift */; };
+		744E29BF2E485FFE006D0E89 /* EditTaskEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29BE2E485FFE006D0E89 /* EditTaskEntities.swift */; };
+		744E29C12E4877D0006D0E89 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29C02E4877D0006D0E89 /* Alertable.swift */; };
 		7481B7E72E4136C900CFA85C /* TaskListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481B7E62E4136C900CFA85C /* TaskListPresenter.swift */; };
 		7481B7E92E4136D600CFA85C /* TaskListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481B7E82E4136D600CFA85C /* TaskListInteractor.swift */; };
 		7481B7EB2E4136E300CFA85C /* TaskListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481B7EA2E4136E300CFA85C /* TaskListRouter.swift */; };
@@ -31,18 +40,33 @@
 		748A74FE2E45701500A1375E /* StartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748A74FD2E45701500A1375E /* StartInteractor.swift */; };
 		748A75002E45742E00A1375E /* UserDefaultsLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748A74FF2E45742E00A1375E /* UserDefaultsLayer.swift */; };
 		748A75032E45746900A1375E /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748A75022E45746900A1375E /* Persist.swift */; };
-		748A75052E45764C00A1375E /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748A75042E45764C00A1375E /* Page.swift */; };
 		748A75062E45764C00A1375E /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748A75042E45764C00A1375E /* Page.swift */; };
-		748A75082E45769200A1375E /* TodoPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748A75072E45769200A1375E /* TodoPayload.swift */; };
 		748A75092E45769200A1375E /* TodoPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748A75072E45769200A1375E /* TodoPayload.swift */; };
 		748A750B2E45845700A1375E /* StartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748A750A2E45845700A1375E /* StartRouter.swift */; };
+		748E93832E47DF770090E6B7 /* MockStartInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93822E47DF770090E6B7 /* MockStartInteractorOutput.swift */; };
+		748E93852E47DFC20090E6B7 /* MockSeedDataStatusStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93842E47DFC20090E6B7 /* MockSeedDataStatusStorage.swift */; };
+		748E93872E47E0020090E6B7 /* RemoteAPIManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93862E47E0020090E6B7 /* RemoteAPIManagerMock.swift */; };
+		748E93892E47E1020090E6B7 /* StartInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93882E47E1020090E6B7 /* StartInteractorTests.swift */; };
+		748E938B2E47E1FD0090E6B7 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E938A2E47E1FD0090E6B7 /* RepositoryProtocol.swift */; };
+		748E93902E47EF710090E6B7 /* MockStartInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E938F2E47EF710090E6B7 /* MockStartInteractorInput.swift */; };
+		748E93922E47EF920090E6B7 /* MockStartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93912E47EF920090E6B7 /* MockStartRouter.swift */; };
+		748E93962E47F0290090E6B7 /* StartPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93952E47F0290090E6B7 /* StartPresenterTests.swift */; };
+		748E93992E47F5320090E6B7 /* DummyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93982E47F5320090E6B7 /* DummyError.swift */; };
+		748E939D2E47FB4B0090E6B7 /* TaskListViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E939C2E47FB4B0090E6B7 /* TaskListViewMock.swift */; };
+		748E939F2E47FB8E0090E6B7 /* TaskListInteractorInputMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E939E2E47FB8E0090E6B7 /* TaskListInteractorInputMock.swift */; };
+		748E93A12E47FBCA0090E6B7 /* TaskListRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93A02E47FBCA0090E6B7 /* TaskListRouterMock.swift */; };
+		748E93A32E47FC540090E6B7 /* TaskListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93A22E47FC540090E6B7 /* TaskListPresenterTests.swift */; };
+		748E93A82E4805BA0090E6B7 /* EditTaskPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93A72E4805BA0090E6B7 /* EditTaskPresenterTests.swift */; };
+		748E93AA2E4806640090E6B7 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93A92E4806640090E6B7 /* TestCoreDataStack.swift */; };
+		748E93AC2E4814D10090E6B7 /* TaskListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93AB2E4814D10090E6B7 /* TaskListInteractorTests.swift */; };
+		748E93AE2E4816080090E6B7 /* MockRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93AD2E4816080090E6B7 /* MockRepository.swift */; };
+		748E93B02E4817790090E6B7 /* TaskListInteractorOutputMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748E93AF2E4817790090E6B7 /* TaskListInteractorOutputMock.swift */; };
 		74E6B0862E429DB800E3045C /* URLSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6B0852E429DB800E3045C /* URLSessionManager.swift */; };
 		74E6B08A2E429E3F00E3045C /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6B0892E429E3E00E3045C /* RequestProtocol.swift */; };
 		74E6B08D2E429E6400E3045C /* TodosRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6B08C2E429E6400E3045C /* TodosRequest.swift */; };
 		74E6B08F2E429EB600E3045C /* RemoteAPIManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6B08E2E429EB600E3045C /* RemoteAPIManagerProtocol.swift */; };
 		74E6B0912E429ECD00E3045C /* RemoteAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6B0902E429ECD00E3045C /* RemoteAPIManager.swift */; };
 		74E6B0932E429F0C00E3045C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6B0922E429F0C00E3045C /* HTTPMethod.swift */; };
-		74E6B09A2E42B13A00E3045C /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6B0972E42B13A00E3045C /* Todo.swift */; };
 		74E6B09B2E42B13A00E3045C /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6B0972E42B13A00E3045C /* Todo.swift */; };
 		74E6B0A02E42BA8400E3045C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6B09F2E42BA8400E3045C /* CoreDataStack.swift */; };
 		74E6B0A42E42D2CD00E3045C /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E6B0A32E42D2CD00E3045C /* CoreDataRepository.swift */; };
@@ -72,6 +96,15 @@
 		744977A52E44287500BEE726 /* EditTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPresenter.swift; sourceTree = "<group>"; };
 		744977A72E4428B300BEE726 /* EditTaskInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskInteractor.swift; sourceTree = "<group>"; };
 		744977A92E4428C400BEE726 /* EditTaskContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskContract.swift; sourceTree = "<group>"; };
+		744E29AC2E483948006D0E89 /* Todo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+Extension.swift"; sourceTree = "<group>"; };
+		744E29B02E483D4B006D0E89 /* EditTaskInteractorInputMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskInteractorInputMock.swift; sourceTree = "<group>"; };
+		744E29B22E483D9E006D0E89 /* EditTaskModuleDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskModuleDelegateMock.swift; sourceTree = "<group>"; };
+		744E29B62E484343006D0E89 /* EditTaskInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskInteractorTests.swift; sourceTree = "<group>"; };
+		744E29B82E48458B006D0E89 /* EditTaskInteractorOutputMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskInteractorOutputMock.swift; sourceTree = "<group>"; };
+		744E29BA2E485FB4006D0E89 /* StartEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEntities.swift; sourceTree = "<group>"; };
+		744E29BC2E485FDE006D0E89 /* TaskListEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListEntities.swift; sourceTree = "<group>"; };
+		744E29BE2E485FFE006D0E89 /* EditTaskEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskEntities.swift; sourceTree = "<group>"; };
+		744E29C02E4877D0006D0E89 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		7481B7E62E4136C900CFA85C /* TaskListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenter.swift; sourceTree = "<group>"; };
 		7481B7E82E4136D600CFA85C /* TaskListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListInteractor.swift; sourceTree = "<group>"; };
 		7481B7EA2E4136E300CFA85C /* TaskListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListRouter.swift; sourceTree = "<group>"; };
@@ -90,6 +123,24 @@
 		748A75042E45764C00A1375E /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		748A75072E45769200A1375E /* TodoPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoPayload.swift; sourceTree = "<group>"; };
 		748A750A2E45845700A1375E /* StartRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRouter.swift; sourceTree = "<group>"; };
+		748E93822E47DF770090E6B7 /* MockStartInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStartInteractorOutput.swift; sourceTree = "<group>"; };
+		748E93842E47DFC20090E6B7 /* MockSeedDataStatusStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSeedDataStatusStorage.swift; sourceTree = "<group>"; };
+		748E93862E47E0020090E6B7 /* RemoteAPIManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAPIManagerMock.swift; sourceTree = "<group>"; };
+		748E93882E47E1020090E6B7 /* StartInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartInteractorTests.swift; sourceTree = "<group>"; };
+		748E938A2E47E1FD0090E6B7 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		748E938F2E47EF710090E6B7 /* MockStartInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStartInteractorInput.swift; sourceTree = "<group>"; };
+		748E93912E47EF920090E6B7 /* MockStartRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStartRouter.swift; sourceTree = "<group>"; };
+		748E93952E47F0290090E6B7 /* StartPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPresenterTests.swift; sourceTree = "<group>"; };
+		748E93982E47F5320090E6B7 /* DummyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyError.swift; sourceTree = "<group>"; };
+		748E939C2E47FB4B0090E6B7 /* TaskListViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewMock.swift; sourceTree = "<group>"; };
+		748E939E2E47FB8E0090E6B7 /* TaskListInteractorInputMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListInteractorInputMock.swift; sourceTree = "<group>"; };
+		748E93A02E47FBCA0090E6B7 /* TaskListRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListRouterMock.swift; sourceTree = "<group>"; };
+		748E93A22E47FC540090E6B7 /* TaskListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenterTests.swift; sourceTree = "<group>"; };
+		748E93A72E4805BA0090E6B7 /* EditTaskPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPresenterTests.swift; sourceTree = "<group>"; };
+		748E93A92E4806640090E6B7 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		748E93AB2E4814D10090E6B7 /* TaskListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListInteractorTests.swift; sourceTree = "<group>"; };
+		748E93AD2E4816080090E6B7 /* MockRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepository.swift; sourceTree = "<group>"; };
+		748E93AF2E4817790090E6B7 /* TaskListInteractorOutputMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListInteractorOutputMock.swift; sourceTree = "<group>"; };
 		748EBE9E2E41170C004869DB /* ToDoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		748EBEB72E41170D004869DB /* ToDoListAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74E6B0852E429DB800E3045C /* URLSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionManager.swift; sourceTree = "<group>"; };
@@ -105,14 +156,6 @@
 		74E6B89D2E470157004832FF /* TaskListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListDataSource.swift; sourceTree = "<group>"; };
 		74E6B8A02E4702DD004832FF /* TaskListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		748EBEBA2E41170D004869DB /* ToDoListAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ToDoListAppTests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		748EBE9B2E41170C004869DB /* Frameworks */ = {
@@ -198,6 +241,24 @@
 			path = DependencyContainer;
 			sourceTree = "<group>";
 		};
+		744E29AE2E483A5A006D0E89 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				744E29AC2E483948006D0E89 /* Todo+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		744E29AF2E483D2B006D0E89 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				744E29B02E483D4B006D0E89 /* EditTaskInteractorInputMock.swift */,
+				744E29B22E483D9E006D0E89 /* EditTaskModuleDelegateMock.swift */,
+				744E29B82E48458B006D0E89 /* EditTaskInteractorOutputMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		7481B7E42E41360000CFA85C /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +267,7 @@
 				741669392E4118DF0028BB18 /* TaskListViewController.swift */,
 				7481B7E62E4136C900CFA85C /* TaskListPresenter.swift */,
 				7481B7E82E4136D600CFA85C /* TaskListInteractor.swift */,
+				744E29BC2E485FDE006D0E89 /* TaskListEntities.swift */,
 				7481B7EA2E4136E300CFA85C /* TaskListRouter.swift */,
 				7481B7EC2E4136EC00CFA85C /* TaskListContract.swift */,
 			);
@@ -254,6 +316,7 @@
 				7481B7F22E41399D00CFA85C /* ReuseIdentifiable.swift */,
 				7481B7F82E41B29600CFA85C /* UIColor+Extension.swift */,
 				748A74F42E456DCC00A1375E /* Date+Extension.swift */,
+				744E29C02E4877D0006D0E89 /* Alertable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -264,6 +327,7 @@
 				748A74F72E456F3600A1375E /* StartViewController.swift */,
 				748A74F92E456F4A00A1375E /* StartPresenter.swift */,
 				748A74FD2E45701500A1375E /* StartInteractor.swift */,
+				744E29BA2E485FB4006D0E89 /* StartEntities.swift */,
 				748A750A2E45845700A1375E /* StartRouter.swift */,
 				748A74FB2E456F6900A1375E /* StartContract.swift */,
 			);
@@ -279,11 +343,102 @@
 			path = LocalStorage;
 			sourceTree = "<group>";
 		};
+		748E937F2E47DF4F0090E6B7 /* ToDoListAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				748E938E2E47E9B80090E6B7 /* Cases */,
+				748E93812E47DF520090E6B7 /* Core */,
+				748E93972E47F51A0090E6B7 /* Helpers */,
+				744E29AE2E483A5A006D0E89 /* Extensions */,
+			);
+			path = ToDoListAppTests;
+			sourceTree = "<group>";
+		};
+		748E93812E47DF520090E6B7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				748E93842E47DFC20090E6B7 /* MockSeedDataStatusStorage.swift */,
+				748E93862E47E0020090E6B7 /* RemoteAPIManagerMock.swift */,
+				748E93AD2E4816080090E6B7 /* MockRepository.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		748E938E2E47E9B80090E6B7 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				748E93932E47EFAE0090E6B7 /* Start */,
+				748E939A2E47FAAA0090E6B7 /* TaskList */,
+				748E93A42E4802FB0090E6B7 /* EditTask */,
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
+		748E93932E47EFAE0090E6B7 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				748E93942E47EFB50090E6B7 /* Mocks */,
+				748E93952E47F0290090E6B7 /* StartPresenterTests.swift */,
+				748E93882E47E1020090E6B7 /* StartInteractorTests.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		748E93942E47EFB50090E6B7 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				748E938F2E47EF710090E6B7 /* MockStartInteractorInput.swift */,
+				748E93822E47DF770090E6B7 /* MockStartInteractorOutput.swift */,
+				748E93912E47EF920090E6B7 /* MockStartRouter.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		748E93972E47F51A0090E6B7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				748E93A92E4806640090E6B7 /* TestCoreDataStack.swift */,
+				748E93982E47F5320090E6B7 /* DummyError.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		748E939A2E47FAAA0090E6B7 /* TaskList */ = {
+			isa = PBXGroup;
+			children = (
+				748E939B2E47FB3F0090E6B7 /* Mocks */,
+				748E93A22E47FC540090E6B7 /* TaskListPresenterTests.swift */,
+				748E93AB2E4814D10090E6B7 /* TaskListInteractorTests.swift */,
+			);
+			path = TaskList;
+			sourceTree = "<group>";
+		};
+		748E939B2E47FB3F0090E6B7 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				748E939C2E47FB4B0090E6B7 /* TaskListViewMock.swift */,
+				748E939E2E47FB8E0090E6B7 /* TaskListInteractorInputMock.swift */,
+				748E93AF2E4817790090E6B7 /* TaskListInteractorOutputMock.swift */,
+				748E93A02E47FBCA0090E6B7 /* TaskListRouterMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		748E93A42E4802FB0090E6B7 /* EditTask */ = {
+			isa = PBXGroup;
+			children = (
+				744E29AF2E483D2B006D0E89 /* Mocks */,
+				748E93A72E4805BA0090E6B7 /* EditTaskPresenterTests.swift */,
+				744E29B62E484343006D0E89 /* EditTaskInteractorTests.swift */,
+			);
+			path = EditTask;
+			sourceTree = "<group>";
+		};
 		748EBE952E41170C004869DB = {
 			isa = PBXGroup;
 			children = (
 				7416693A2E4118DF0028BB18 /* ToDoListApp */,
-				748EBEBA2E41170D004869DB /* ToDoListAppTests */,
+				748E937F2E47DF4F0090E6B7 /* ToDoListAppTests */,
 				748EBE9F2E41170C004869DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -303,6 +458,7 @@
 				74E6B0A62E42E90000E3045C /* EditTaskViewController.swift */,
 				744977A52E44287500BEE726 /* EditTaskPresenter.swift */,
 				744977A72E4428B300BEE726 /* EditTaskInteractor.swift */,
+				744E29BE2E485FFE006D0E89 /* EditTaskEntities.swift */,
 				744977A92E4428C400BEE726 /* EditTaskContract.swift */,
 			);
 			path = EditTask;
@@ -367,6 +523,7 @@
 		74E6B0A52E42D3B300E3045C /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				748E938A2E47E1FD0090E6B7 /* RepositoryProtocol.swift */,
 				74E6B0A32E42D2CD00E3045C /* CoreDataRepository.swift */,
 			);
 			path = Repository;
@@ -415,9 +572,6 @@
 			);
 			dependencies = (
 				748EBEB92E41170D004869DB /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				748EBEBA2E41170D004869DB /* ToDoListAppTests */,
 			);
 			name = ToDoListAppTests;
 			packageProductDependencies = (
@@ -496,6 +650,7 @@
 				7481B7EB2E4136E300CFA85C /* TaskListRouter.swift in Sources */,
 				748A74F82E456F3600A1375E /* StartViewController.swift in Sources */,
 				74E6B08F2E429EB600E3045C /* RemoteAPIManagerProtocol.swift in Sources */,
+				748E938B2E47E1FD0090E6B7 /* RepositoryProtocol.swift in Sources */,
 				748A75002E45742E00A1375E /* UserDefaultsLayer.swift in Sources */,
 				748A74FE2E45701500A1375E /* StartInteractor.swift in Sources */,
 				7481B7E72E4136C900CFA85C /* TaskListPresenter.swift in Sources */,
@@ -505,6 +660,7 @@
 				7481B7F62E419B4800CFA85C /* BottomBarView.swift in Sources */,
 				748A74FC2E456F6900A1375E /* StartContract.swift in Sources */,
 				7481B7ED2E4136EC00CFA85C /* TaskListContract.swift in Sources */,
+				744E29BD2E485FDE006D0E89 /* TaskListEntities.swift in Sources */,
 				7481B7F32E41399D00CFA85C /* ReuseIdentifiable.swift in Sources */,
 				748A75062E45764C00A1375E /* Page.swift in Sources */,
 				7481B7F02E41382000CFA85C /* TaskCell.swift in Sources */,
@@ -523,7 +679,10 @@
 				74E6B08A2E429E3F00E3045C /* RequestProtocol.swift in Sources */,
 				748A750B2E45845700A1375E /* StartRouter.swift in Sources */,
 				7481B7E92E4136D600CFA85C /* TaskListInteractor.swift in Sources */,
+				744E29C12E4877D0006D0E89 /* Alertable.swift in Sources */,
+				744E29BF2E485FFE006D0E89 /* EditTaskEntities.swift in Sources */,
 				74E6B08D2E429E6400E3045C /* TodosRequest.swift in Sources */,
+				744E29BB2E485FB4006D0E89 /* StartEntities.swift in Sources */,
 				748A75092E45769200A1375E /* TodoPayload.swift in Sources */,
 				74E6B0A72E42E90000E3045C /* EditTaskViewController.swift in Sources */,
 			);
@@ -533,9 +692,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				748A75082E45769200A1375E /* TodoPayload.swift in Sources */,
-				74E6B09A2E42B13A00E3045C /* Todo.swift in Sources */,
-				748A75052E45764C00A1375E /* Page.swift in Sources */,
+				748E93872E47E0020090E6B7 /* RemoteAPIManagerMock.swift in Sources */,
+				744E29AD2E483948006D0E89 /* Todo+Extension.swift in Sources */,
+				744E29B32E483D9E006D0E89 /* EditTaskModuleDelegateMock.swift in Sources */,
+				748E93992E47F5320090E6B7 /* DummyError.swift in Sources */,
+				748E93892E47E1020090E6B7 /* StartInteractorTests.swift in Sources */,
+				744E29B72E484343006D0E89 /* EditTaskInteractorTests.swift in Sources */,
+				748E93902E47EF710090E6B7 /* MockStartInteractorInput.swift in Sources */,
+				748E93AC2E4814D10090E6B7 /* TaskListInteractorTests.swift in Sources */,
+				744E29B92E48458B006D0E89 /* EditTaskInteractorOutputMock.swift in Sources */,
+				748E939D2E47FB4B0090E6B7 /* TaskListViewMock.swift in Sources */,
+				748E93832E47DF770090E6B7 /* MockStartInteractorOutput.swift in Sources */,
+				748E93962E47F0290090E6B7 /* StartPresenterTests.swift in Sources */,
+				748E93852E47DFC20090E6B7 /* MockSeedDataStatusStorage.swift in Sources */,
+				748E93AE2E4816080090E6B7 /* MockRepository.swift in Sources */,
+				748E93A12E47FBCA0090E6B7 /* TaskListRouterMock.swift in Sources */,
+				748E939F2E47FB8E0090E6B7 /* TaskListInteractorInputMock.swift in Sources */,
+				748E93B02E4817790090E6B7 /* TaskListInteractorOutputMock.swift in Sources */,
+				748E93AA2E4806640090E6B7 /* TestCoreDataStack.swift in Sources */,
+				748E93A82E4805BA0090E6B7 /* EditTaskPresenterTests.swift in Sources */,
+				748E93922E47EF920090E6B7 /* MockStartRouter.swift in Sources */,
+				744E29B12E483D4B006D0E89 /* EditTaskInteractorInputMock.swift in Sources */,
+				748E93A32E47FC540090E6B7 /* TaskListPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,7 +15,7 @@ final class AppDependencyContainer: StartViewControllerFactory,
   // Long-lived dependencies
   private let apiManager: RemoteAPIManagerProtocol
   private let coreDataStack: CoreDataStack
-  private let todosRepository: CoreDataRepository<Todo>
+  private let todosRepository: any RepositoryProtocol<Todo>
   private let taskListPresenter: TaskListPresenter
     
   // MARK: - Initialization
@@ -31,7 +31,7 @@ final class AppDependencyContainer: StartViewControllerFactory,
     func makeCoreDataStack() -> CoreDataStack {
       return CoreDataStack()
     }
-    func makeTodosRepository(stack: CoreDataStack) -> CoreDataRepository<Todo> {
+    func makeTodosRepository(stack: CoreDataStack) -> any RepositoryProtocol<Todo> {
       return CoreDataRepository(stack: stack)
     }
     func makeTaskListPresenter() -> TaskListPresenter {
@@ -60,9 +60,9 @@ final class AppDependencyContainer: StartViewControllerFactory,
   
   public func makeStartInteractor() -> StartInteractor {
     let userDefaults = UserDefaultsLayer()
-    return StartInteractor(seedDataStatusStorage: userDefaults,
+    return StartInteractor(storage: userDefaults,
                            apiManager: apiManager,
-                           todosRepository: todosRepository)
+                           repository: todosRepository)
   }
   
   // MARK: - TaskListViewControllerFactory
@@ -82,7 +82,7 @@ final class AppDependencyContainer: StartViewControllerFactory,
     return view
   }
   
-  func makeTaskListInteractor(repository: CoreDataRepository<Todo>) -> TaskListInteractor {
+  func makeTaskListInteractor(repository: any RepositoryProtocol<Todo>) -> TaskListInteractor {
     return TaskListInteractor(repository: repository)
   }
   
@@ -99,6 +99,7 @@ final class AppDependencyContainer: StartViewControllerFactory,
     let interactor = makeEditTaskInteractor(editingTask: editingTask)
     
     view.presenter = presenter
+    presenter.view = view
     presenter.interactor = interactor
     presenter.delegate = taskListPresenter
     interactor.presenter = presenter

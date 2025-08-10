@@ -11,8 +11,9 @@ class EditTaskPresenter: EditTaskPresenterProtocol {
   
   // MARK: - Dependencies
   
-  var interactor: EditTaskInteractorInputProtocol?
-  weak var delegate: EditTaskModuleDelegate?
+  public weak var view: EditTaskViewProtocol?
+  public var interactor: EditTaskInteractorInputProtocol?
+  public weak var delegate: EditTaskModuleDelegate?
   
   // MARK: - Computed Properties
   
@@ -51,7 +52,7 @@ extension EditTaskPresenter: EditTaskInteractorOutputProtocol {
       delegate?.didUpdateTask(task)
       
     case .failure(let error):
-      print(error)
+      view?.presentAlert(title: "Error", message: error.localizedDescription)
     }
   }
 }

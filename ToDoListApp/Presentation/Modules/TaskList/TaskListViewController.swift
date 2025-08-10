@@ -69,6 +69,7 @@ private extension TaskListViewController {
   private func setupNavigationItem() {
     navigationItem.title = "Задачи"
     navigationItem.hidesSearchBarWhenScrolling = false
+    navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
   }
   
   private func setupNavigationBar() {

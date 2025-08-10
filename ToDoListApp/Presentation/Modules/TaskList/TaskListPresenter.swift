@@ -92,7 +92,7 @@ extension TaskListPresenter: TaskListInteractorOutputProtocol {
       todos.removeAll { $0 == todo }
       
     case .failure(let error):
-      print(error)
+      view?.presentAlert(title: "Error", message: error.localizedDescription)
     }
   }
 }

@@ -9,7 +9,4 @@ import Foundation
 
 struct Page<T: Decodable>: Decodable {
   let todos: [T]
-  let total: Int
-  let skip: Int
-  let limit: Int
 }

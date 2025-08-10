@@ -7,12 +7,6 @@
 
 import Foundation
 
-public enum EditTaskResult {
-  case created(Todo)
-  case updated(Todo)
-  case failure(Error)
-}
-
 class EditTaskInteractor: EditTaskInteractorInputProtocol {
   
   // MARK: - Properties
@@ -22,11 +16,11 @@ class EditTaskInteractor: EditTaskInteractorInputProtocol {
   // MARK: - Dependencies
   
   private(set) var editingTask: Todo?
-  private let repository: CoreDataRepository<Todo>
+  private let repository: any RepositoryProtocol<Todo>
   
   // MARK: - Initialization
   
-  public init(editingTask: Todo?, repository: CoreDataRepository<Todo>) {
+  public init(editingTask: Todo?, repository: any RepositoryProtocol<Todo>) {
     self.editingTask = editingTask
     self.repository = repository
   }
@@ -36,9 +30,11 @@ class EditTaskInteractor: EditTaskInteractorInputProtocol {
   public func persistTask(title: String, description: String) {
     guard !title.isEmpty else { return }
     
-    editingTask != nil
-      ? updateTask(title: title, description: description)
-      : createTask(title: title, description: description)
+    if editingTask != nil {
+      updateTask(title: title, description: description)
+    } else {
+      createTask(title: title, description: description)
+    }
   }
   
   // MARK: - Private Helpers

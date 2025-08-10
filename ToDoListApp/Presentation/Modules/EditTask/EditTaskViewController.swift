@@ -39,7 +39,7 @@ class EditTaskViewController: UIViewController {
   private let dateLabel: UILabel = {
     let label = UILabel()
     label.font = .systemFont(ofSize: 13, weight: .regular)
-    label.textColor = .gray
+    label.textColor = .primaryGrayColor
     return label
   }()
   
@@ -75,7 +75,7 @@ class EditTaskViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    titleTextView.becomeFirstResponder()
+    focusTitleTextView()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -112,6 +112,7 @@ private extension EditTaskViewController {
   
   private func setupNavigationBar() {
     navigationController?.navigationBar.prefersLargeTitles = false
+    navigationController?.navigationBar.tintColor = .systemYellow
   }
   
   private func setupDelegates() {
@@ -134,7 +135,14 @@ private extension EditTaskViewController {
   func configureDescriptionTextView() {
     descriptionTextView.text = presenter?.initialDescription
   }
+  
+  func focusTitleTextView() {
+    titleTextView.becomeFirstResponder()
+  }
 }
+
+// MARK: - EditTaskViewProtocol
+extension EditTaskViewController: EditTaskViewProtocol {}
 
 // MARK: - UITextViewDelegate
 extension EditTaskViewController: UITextViewDelegate {

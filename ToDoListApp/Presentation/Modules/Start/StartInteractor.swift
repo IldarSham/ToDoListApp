@@ -7,38 +7,32 @@
 
 import Foundation
 
-public enum SeedingResult {
-  case success
-  case failure(Error)
-  case alreadySeeded
-}
-
 class StartInteractor: StartInteractorInputProtocol {
   
   // MARK: - Properties
   
-  var presenter: StartInteractorOutputProtocol?
+  public var presenter: StartInteractorOutputProtocol?
   
   // MARK: - Dependencies
   
-  private let seedDataStatusStorage: SeedDataStatusStorage
+  private let storage: SeedDataStatusStorage
   private let apiManager: RemoteAPIManagerProtocol
-  private let todosRepository: CoreDataRepository<Todo>
+  private let repository: any RepositoryProtocol<Todo>
   
   // MARK: - Initialization
   
-  init(seedDataStatusStorage: SeedDataStatusStorage,
+  init(storage: SeedDataStatusStorage,
        apiManager: RemoteAPIManagerProtocol,
-       todosRepository: CoreDataRepository<Todo>) {
-    self.seedDataStatusStorage = seedDataStatusStorage
+       repository: any RepositoryProtocol<Todo>) {
+    self.storage = storage
     self.apiManager = apiManager
-    self.todosRepository = todosRepository
+    self.repository = repository
   }
 
   // MARK: - Public Methods
   
   public func seedDatabaseIfNeeded() {
-    guard !seedDataStatusStorage.isSeedDataCompleted else {
+    guard !storage.isSeedDataCompleted else {
       presenter?.didFinishSeedingDatabase(result: .alreadySeeded)
       return
     }
@@ -58,7 +52,7 @@ class StartInteractor: StartInteractorInputProtocol {
   // MARK: - Private Methods
   
   private func saveTodos(_ todos: [TodoPayload]) {
-    todosRepository.createBatch(items: todos) { todo, payload in
+    repository.createBatch(items: todos) { todo, payload in
       todo.title = payload.todo
       todo.date = .now
       todo.isCompleted = payload.completed
@@ -67,7 +61,7 @@ class StartInteractor: StartInteractorInputProtocol {
 
       switch result {
       case .success:
-        self.seedDataStatusStorage.isSeedDataCompleted = true
+        self.storage.isSeedDataCompleted = true
         self.presenter?.didFinishSeedingDatabase(result: .success)
       case .failure(let error):
         self.presenter?.didFinishSeedingDatabase(result: .failure(error))
