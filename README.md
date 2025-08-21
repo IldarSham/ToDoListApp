@@ -1,5 +1,5 @@
 # ToDoListApp
-A simple task manager.
+A simple task manager using VIPER architecture.
 
 ## Features
 * VIPER Architecture.
