@@ -60,7 +60,12 @@ class BottomBarView: UIView {
   // MARK: - Private Methods
   
   private func updateTaskCount() {
-    taskCountLabel.text = "\(taskCount) Задач"
+    taskCountLabel.text = formatTasks(count: taskCount)
+  }
+  
+  private func formatTasks(count: Int) -> String {
+    let taskWord = count.pluralize(one: "Задача", few: "Задачи", many: "Задач")
+    return "\(count) \(taskWord)"
   }
   
   @objc

@@ -25,6 +25,7 @@
 		744E29BD2E485FDE006D0E89 /* TaskListEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29BC2E485FDE006D0E89 /* TaskListEntities.swift */; };
 		744E29BF2E485FFE006D0E89 /* EditTaskEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29BE2E485FFE006D0E89 /* EditTaskEntities.swift */; };
 		744E29C12E4877D0006D0E89 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E29C02E4877D0006D0E89 /* Alertable.swift */; };
+		746ACC792E675E22006F7171 /* Int+pluralize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746ACC782E675E22006F7171 /* Int+pluralize.swift */; };
 		7481B7E72E4136C900CFA85C /* TaskListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481B7E62E4136C900CFA85C /* TaskListPresenter.swift */; };
 		7481B7E92E4136D600CFA85C /* TaskListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481B7E82E4136D600CFA85C /* TaskListInteractor.swift */; };
 		7481B7EB2E4136E300CFA85C /* TaskListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481B7EA2E4136E300CFA85C /* TaskListRouter.swift */; };
@@ -105,6 +106,7 @@
 		744E29BC2E485FDE006D0E89 /* TaskListEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListEntities.swift; sourceTree = "<group>"; };
 		744E29BE2E485FFE006D0E89 /* EditTaskEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskEntities.swift; sourceTree = "<group>"; };
 		744E29C02E4877D0006D0E89 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		746ACC782E675E22006F7171 /* Int+pluralize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+pluralize.swift"; sourceTree = "<group>"; };
 		7481B7E62E4136C900CFA85C /* TaskListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListPresenter.swift; sourceTree = "<group>"; };
 		7481B7E82E4136D600CFA85C /* TaskListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListInteractor.swift; sourceTree = "<group>"; };
 		7481B7EA2E4136E300CFA85C /* TaskListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListRouter.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				7481B7F82E41B29600CFA85C /* UIColor+Extension.swift */,
 				748A74F42E456DCC00A1375E /* Date+Extension.swift */,
 				744E29C02E4877D0006D0E89 /* Alertable.swift */,
+				746ACC782E675E22006F7171 /* Int+pluralize.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				74E6B8A12E4702DD004832FF /* TaskListDelegate.swift in Sources */,
 				744977A82E4428B300BEE726 /* EditTaskInteractor.swift in Sources */,
 				744977AA2E4428C400BEE726 /* EditTaskContract.swift in Sources */,
+				746ACC792E675E22006F7171 /* Int+pluralize.swift in Sources */,
 				74E6B0932E429F0C00E3045C /* HTTPMethod.swift in Sources */,
 				74E6B0A02E42BA8400E3045C /* CoreDataStack.swift in Sources */,
 				7416693F2E4118DF0028BB18 /* TaskListViewController.swift in Sources */,
